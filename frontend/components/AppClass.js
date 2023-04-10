@@ -13,9 +13,19 @@ const initialState = {
   steps: initialSteps,
 }
 
+
+
 export default class AppClass extends React.Component {
   // THE FOLLOWING HELPERS ARE JUST RECOMMENDATIONS.
   // You can delete them and build your own logic from scratch.
+
+  constructor() {
+    super();
+    this.state = { 
+          hello: "hello"
+
+    }
+  }
 
   getXY = () => {
     // It it not necessary to have a state to track the coordinates.
@@ -59,6 +69,7 @@ export default class AppClass extends React.Component {
           <h3 id="coordinates">Coordinates (2, 2)</h3>
           <h3 id="steps">You moved 0 times</h3>
         </div>
+        <h1>{this.state.hello}</h1>
         <div id="grid">
           {
             [0, 1, 2, 3, 4, 5, 6, 7, 8].map(idx => (

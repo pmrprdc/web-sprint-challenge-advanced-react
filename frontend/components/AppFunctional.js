@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 
 // Suggested initial states
 const initialMessage = ''
@@ -9,13 +10,14 @@ const initialIndex = 4 // the index the "B" is at
 export default function AppFunctional(props) {
   // THE FOLLOWING HELPERS ARE JUST RECOMMENDATIONS.
   // You can delete them and build your own logic from scratch.
+  const [state, changeState] = useState();
 
   function getXY() {
     // It it not necessary to have a state to track the coordinates.
     // It's enough to know what index the "B" is at, to be able to calculate them.
   }
 
-  function getXYMessage() {
+  function getXYMessage() {   
     // It it not necessary to have a state to track the "Coordinates (2, 2)" message for the user.
     // You can use the `getXY` helper above to obtain the coordinates, and then `getXYMessage`
     // returns the fully constructed string.
