@@ -69,7 +69,6 @@ export default class AppClass extends React.Component {
           <h3 id="coordinates">Coordinates (2, 2)</h3>
           <h3 id="steps">You moved 0 times</h3>
         </div>
-        <h1>{this.state.hello}</h1>
         <div id="grid">
           {
             [0, 1, 2, 3, 4, 5, 6, 7, 8].map(idx => (
