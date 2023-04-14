@@ -35,6 +35,21 @@ export default function AppFunctional(props) {
   }
 
   function move(evt) {
+    console.log(evt.target.id)
+    if(evt.target.id === "up"){
+     setIndex(index-3)
+    }
+    if(evt.target.id === "down"){
+      setIndex(index+3)
+     }
+     if(evt.target.id === "right"){
+      setIndex(index+1)
+     }
+     if(evt.target.id === "left"){
+      setIndex(index-1)
+     }
+    
+
     // This event handler can use the helper above to obtain a new index for the "B",
     // and change any states accordingly.
   }
@@ -66,10 +81,10 @@ export default function AppFunctional(props) {
         <h3 id="message"></h3>
       </div>
       <div id="keypad">
-        <button id="left">LEFT</button>
-        <button id="up">UP</button>
-        <button id="right">RIGHT</button>
-        <button id="down">DOWN</button>
+        <button onClick={move}id="left">LEFT</button>
+        <button onClick = {move} id="up">UP</button>
+        <button onClick = {move} id="right">RIGHT</button>
+        <button onClick = {move} id="down">DOWN</button>
         <button id="reset">reset</button>
       </div>
       <form>
@@ -78,4 +93,4 @@ export default function AppFunctional(props) {
       </form>
     </div>
   )
-}
+      }
