@@ -13,6 +13,7 @@ export default function AppFunctional(props) {
   const [state, changeState] = useState();
   const [index, setIndex] = useState(4);
   const [initialSteps, setInitialSteps] = useState(0);
+  const [initialMessage, setInitialMessage] = useState("")
 
   function getXY(index) {
     const coordinatesTable = {
@@ -51,10 +52,17 @@ export default function AppFunctional(props) {
   }
 
   function move(evt) {
-    setInitialSteps(initialSteps+1)
-    console.log(evt.target.id)
+    
     if(evt.target.id === "up"){
-     setIndex(index-3)
+      const nextIndex = (index-3)
+      const nextCoordinates = getXY(nextIndex)
+      const [x,y] = nextCoordinates;
+      if(x < 4 || y < 4){
+        setInitialSteps(initialSteps+1)
+     setIndex(nextIndex)
+    } else {
+
+    }
     }
     if(evt.target.id === "down"){
       setIndex(index+3)
@@ -95,7 +103,7 @@ export default function AppFunctional(props) {
         }
       </div>
       <div className="info">
-        <h3 id="message"></h3>
+        <h3 id="message">{initialMessage}</h3>
       </div>
       <div id="keypad">
         <button onClick={move}id="left">LEFT</button>
