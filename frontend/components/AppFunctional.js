@@ -55,36 +55,42 @@ export default function AppFunctional(props) {
   }
 
   function move(evt) {
-    
+    const [x,y] = getXY(index)
     if(evt.target.id === "up"){
-        const nextIndex = (index-3)
-        const nextCoordinates = getXY(nextIndex)
-        const [x,y] = nextCoordinates;
-        if(x < 4 || y < 4){
-          setInitialSteps(initialSteps+1)
-          setInitialMessage("")
-      setIndex(nextIndex)
+     
+      if(y!==1){
+        setInitialMessage("")
+        setIndex(index-3)
       } else {
-        setInitialMessage("You can't go up")
+        setInitialMessage("you can't move up")
       }
     }
     if(evt.target.id === "down"){
-      const nextIndex = (index+3)
-        const nextCoordinates = getXY(nextIndex)
-        const [x,y] = nextCoordinates;
-        if(x < 4 || y < 4){
-          setInitialSteps(initialSteps+1)
-          setInitialMessage("")
-      setIndex(nextIndex)
+     
+      
+      if(y!==3){
+        setInitialMessage("")
+        setIndex(index+3)
       } else {
-        setInitialMessage("You can't go up")
+        setInitialMessage("you can't move down")
       }
      }
      if(evt.target.id === "right"){
-      setIndex(index+1)
+
+        if(x!==3){
+          setInitialMessage("")
+          setIndex(index+1)
+        } else {
+          setInitialMessage("you can't move right")
+        }
      }
      if(evt.target.id === "left"){
-      setIndex(index-1)
+      if(x!==1){
+        setInitialMessage("")
+        setIndex(index-1)
+      } else {
+        setInitialMessage("you can't move left")
+      }
      }
     
 
