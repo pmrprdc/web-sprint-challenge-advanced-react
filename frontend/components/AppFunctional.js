@@ -69,7 +69,16 @@ export default function AppFunctional(props) {
       }
     }
     if(evt.target.id === "down"){
-      setIndex(index+3)
+      const nextIndex = (index+3)
+        const nextCoordinates = getXY(nextIndex)
+        const [x,y] = nextCoordinates;
+        if(x < 4 || y < 4){
+          setInitialSteps(initialSteps+1)
+          setInitialMessage("")
+      setIndex(nextIndex)
+      } else {
+        setInitialMessage("You can't go up")
+      }
      }
      if(evt.target.id === "right"){
       setIndex(index+1)
