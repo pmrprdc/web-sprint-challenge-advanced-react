@@ -61,6 +61,7 @@ export default function AppFunctional(props) {
       if(y!==1){
         setInitialMessage("")
         setIndex(index-3)
+        setInitialSteps(initialSteps+1)
       } else {
         setInitialMessage("you can't move up")
       }
@@ -71,6 +72,7 @@ export default function AppFunctional(props) {
       if(y!==3){
         setInitialMessage("")
         setIndex(index+3)
+        setInitialSteps(initialSteps+1)
       } else {
         setInitialMessage("you can't move down")
       }
@@ -78,6 +80,7 @@ export default function AppFunctional(props) {
      if(evt.target.id === "right"){
 
         if(x!==3){
+          setInitialSteps(initialSteps+1)
           setInitialMessage("")
           setIndex(index+1)
         } else {
@@ -86,6 +89,7 @@ export default function AppFunctional(props) {
      }
      if(evt.target.id === "left"){
       if(x!==1){
+        setInitialSteps(initialSteps+1)
         setInitialMessage("")
         setIndex(index-1)
       } else {
