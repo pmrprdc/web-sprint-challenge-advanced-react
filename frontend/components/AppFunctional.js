@@ -14,7 +14,20 @@ export default function AppFunctional(props) {
   const [index, setIndex] = useState(4);
   const [initialSteps, setInitialSteps] = useState(0);
 
-  function getXY() {
+  function getXY(index) {
+    const coordinatesTable = {
+      0: [1,1],
+      1: [2,1],
+      2: [3,1],
+      3: [1,2],
+      4: [2,2],
+      5: [3,2],
+      6: [1,3],
+      7: [2,3],
+      8: [3,3]
+
+    }
+    return coordinatesTable[index];
     // It it not necessary to have a state to track the coordinates.
     // It's enough to know what index the "B" is at, to be able to calculate them.
   }
@@ -67,7 +80,7 @@ export default function AppFunctional(props) {
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
-        <h3 id="coordinates">Coordinates (2, 2)</h3>
+        <h3 id="coordinates">Coordinates ({getXY(index)[0]}, {getXY(index)[1]})</h3>
         <h3 id="steps">You moved {initialSteps} times</h3>
       </div>
       <div id="grid">
