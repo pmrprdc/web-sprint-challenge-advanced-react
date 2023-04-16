@@ -16,6 +16,9 @@ export default function AppFunctional(props) {
   const [initialMessage, setInitialMessage] = useState("")
 
   function getXY(index) {
+    if(index < 0 || index > 8) {
+      return [4,4]
+    }
     const coordinatesTable = {
       0: [1,1],
       1: [2,1],
@@ -54,15 +57,16 @@ export default function AppFunctional(props) {
   function move(evt) {
     
     if(evt.target.id === "up"){
-      const nextIndex = (index-3)
-      const nextCoordinates = getXY(nextIndex)
-      const [x,y] = nextCoordinates;
-      if(x < 4 || y < 4){
-        setInitialSteps(initialSteps+1)
-     setIndex(nextIndex)
-    } else {
-
-    }
+        const nextIndex = (index-3)
+        const nextCoordinates = getXY(nextIndex)
+        const [x,y] = nextCoordinates;
+        if(x < 4 || y < 4){
+          setInitialSteps(initialSteps+1)
+          setInitialMessage("")
+      setIndex(nextIndex)
+      } else {
+        setInitialMessage("You can't go up")
+      }
     }
     if(evt.target.id === "down"){
       setIndex(index+3)
