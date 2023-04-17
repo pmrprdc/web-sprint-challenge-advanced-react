@@ -45,6 +45,8 @@ export default function AppFunctional(props) {
   }
 
   function reset() {
+    setIndex(4);
+    setInitialSteps(0)
     // Use this helper to reset all states to their initial values.
   }
 
@@ -133,7 +135,7 @@ export default function AppFunctional(props) {
         <button onClick = {move} id="up">UP</button>
         <button onClick = {move} id="right">RIGHT</button>
         <button onClick = {move} id="down">DOWN</button>
-        <button id="reset">reset</button>
+        <button onClick = {reset} id="reset">reset</button>
       </div>
       <form>
         <input id="email" type="email" placeholder="type email"></input>
