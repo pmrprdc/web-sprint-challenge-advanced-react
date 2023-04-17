@@ -13,7 +13,8 @@ export default function AppFunctional(props) {
   const [state, changeState] = useState();
   const [index, setIndex] = useState(4);
   const [initialSteps, setInitialSteps] = useState(0);
-  const [initialMessage, setInitialMessage] = useState("")
+  const [initialMessage, setInitialMessage] = useState("");
+  const [email, setEmail] = useState(initialEmail);
 
   function getXY(index) {
     if(index < 0 || index > 8) {
@@ -51,6 +52,7 @@ export default function AppFunctional(props) {
   }
 
   function getNextIndex(direction) {
+    
     // This helper takes a direction ("left", "up", etc) and calculates what the next index
     // of the "B" would be. If the move is impossible because we are at the edge of the grid,
     // this helper should return the current index unchanged.
@@ -105,13 +107,15 @@ export default function AppFunctional(props) {
   }
 
   function onChange(evt) {
+    setEmail(evt.target.value)
+    console.log(email)
     // You will need this to update the value of the input.
   }
 
   function onSubmit(evt) {
     // Use a POST request to send a payload to the server.
   }
- 
+  
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
@@ -138,8 +142,8 @@ export default function AppFunctional(props) {
         <button onClick = {reset} id="reset">reset</button>
       </div>
       <form>
-        <input id="email" type="email" placeholder="type email"></input>
-        <input id="submit" type="submit"></input>
+        <input onChange={onChange} id="email" type="email" placeholder="type email"></input>
+        <input id="submit" type="submit" value="Submit"></input>
       </form>
     </div>
   )
