@@ -115,12 +115,16 @@ export default function AppFunctional(props) {
 
   function onSubmit(evt) {
     evt.preventDefault();
-    axios.post("http://localhost:9000/api/result",{ "x": 1, "y": 2, "steps": 3, "email": "lady@gaga.com" })
+    const [x,y] = getXY(index)
+    console.log(x,y)
+    axios.post("http://localhost:9000/api/result",{ "x": x, "y": y, "steps": 3, "email": email })
     .then(res=>{
-      console.log(res)
+      setInitialMessage(res.data.message)
+      
     })
     .catch(err=>{
-      console.log(err)
+      console.log(err.message)
+      setInitialMessage(err.message)
     })
     // Use a POST request to send a payload to the server.
   }
