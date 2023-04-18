@@ -52,6 +52,7 @@ export default class AppClass extends React.Component {
   }
 
   reset = () => {
+    this.setState(initialState)
     // Use this helper to reset all states to their initial values.
   }
 
@@ -149,7 +150,7 @@ export default class AppClass extends React.Component {
       <div id="wrapper" className={className}>
         <div className="info">
           <h3 id="coordinates">Coordinates (2, 2)</h3>
-          <h3 id="steps">You moved 0 times</h3>
+          <h3 id="steps">You moved {this.state.steps} times</h3>
         </div>
         <div id="grid">
           {
@@ -168,7 +169,7 @@ export default class AppClass extends React.Component {
           <button onClick={this.move} id="up">UP</button>
           <button onClick={this.move} id="right">RIGHT</button>
           <button onClick={this.move} id="down">DOWN</button>
-          <button onClick={this.move} id="reset">reset</button>
+          <button onClick={this.reset} id="reset">reset</button>
         </div>
         <form>
           <input id="email" type="email" placeholder="type email"></input>
