@@ -112,6 +112,23 @@ export default class AppClass extends React.Component {
         })
       }
     }
+    if(evt.target.id === "right"){
+      if(x!==3){
+        this.setState({
+          ...this.state, 
+          message: "",
+          index: this.state.index+1,
+          steps: this.state.steps +1
+        })
+      }else {     
+        // setInitialMessage("you can't move up")
+        this.setState({
+          ...this.state,
+          message: "you can't move right"
+        })
+      }
+      
+    }
    
     
     // This event handler can use the helper above to obtain a new index for the "B",
