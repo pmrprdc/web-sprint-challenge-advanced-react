@@ -63,7 +63,7 @@ export default class AppClass extends React.Component {
 
   move = (evt) => {
     const [x,y] = this.getXY(this.state.index)
-    console.log(x,y)
+   
     if(evt.target.id === "up"){
       if(y!==1){
         this.setState({
@@ -72,17 +72,29 @@ export default class AppClass extends React.Component {
           index: this.state.index-3,
           steps: this.state.steps +1
         })
-      }else {
-        console.log("y does equal 1")
+      }else {     
         // setInitialMessage("you can't move up")
         this.setState({
           ...this.state,
           message: "you can't move up"
         })
-
       }
-      console.log(x,y)
-
+    }
+    if(evt.target.id === "down"){
+      if(y!==3){
+        this.setState({
+          ...this.state, 
+          message: "",
+          index: this.state.index+3,
+          steps: this.state.steps +1
+        })
+      }else {     
+        // setInitialMessage("you can't move up")
+        this.setState({
+          ...this.state,
+          message: "you can't move down"
+        })
+      }
     }
    
     
