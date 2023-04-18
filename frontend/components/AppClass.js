@@ -24,7 +24,23 @@ export default class AppClass extends React.Component {
     this.state = initialState;
   }
 
-  getXY = () => {
+  getXY = (index) => {
+    if(index < 0 || index > 8) {
+      return [4,4]
+    }
+    const coordinatesTable = {
+      0: [1,1],
+      1: [2,1],
+      2: [3,1],
+      3: [1,2],
+      4: [2,2],
+      5: [3,2],
+      6: [1,3],
+      7: [2,3],
+      8: [3,3]
+
+    }
+    return coordinatesTable[index];
     // It it not necessary to have a state to track the coordinates.
     // It's enough to know what index the "B" is at, to be able to calculate them.
   }
@@ -46,6 +62,30 @@ export default class AppClass extends React.Component {
   }
 
   move = (evt) => {
+    const [x,y] = this.getXY(this.state.index)
+    console.log(x,y)
+    if(evt.target.id === "up"){
+      if(y!==1){
+        this.setState({
+          ...this.state, 
+          message: "",
+          index: this.state.index-3,
+          steps: this.state.steps +1
+        })
+      }else {
+        console.log("y does equal 1")
+        // setInitialMessage("you can't move up")
+        this.setState({
+          ...this.state,
+          message: "you can't move up"
+        })
+
+      }
+      console.log(x,y)
+
+    }
+   
+    
     // This event handler can use the helper above to obtain a new index for the "B",
     // and change any states accordingly.
   }
@@ -76,14 +116,14 @@ export default class AppClass extends React.Component {
           }
         </div>
         <div className="info">
-          <h3 id="message"></h3>
+          <h3 id="message">{this.state.message}</h3>
         </div>
         <div id="keypad">
-          <button id="left">LEFT</button>
-          <button id="up">UP</button>
-          <button id="right">RIGHT</button>
-          <button id="down">DOWN</button>
-          <button id="reset">reset</button>
+          <button onClick={this.move} id="left">LEFT</button>
+          <button onClick={this.move} id="up">UP</button>
+          <button onClick={this.move} id="right">RIGHT</button>
+          <button onClick={this.move} id="down">DOWN</button>
+          <button onClick={this.move} id="reset">reset</button>
         </div>
         <form>
           <input id="email" type="email" placeholder="type email"></input>
