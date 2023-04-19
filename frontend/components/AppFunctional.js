@@ -127,6 +127,10 @@ export default function AppFunctional(props) {
       setInitialMessage(err.message)
     })
     // Use a POST request to send a payload to the server.
+
+
+    ///reseting input field
+    setEmail("")
   }
   
   return (

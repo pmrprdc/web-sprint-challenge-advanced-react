@@ -67,7 +67,10 @@ export default class AppClass extends React.Component {
 
   move = (evt) => {
     const [x,y] = this.getXY(this.state.index)
-   
+    this.setState({
+      ...this.state,
+      message: ""
+    })
     if(evt.target.id === "up"){
       if(y!==1){
         this.setState({
@@ -153,17 +156,22 @@ export default class AppClass extends React.Component {
     // Use a POST request to send a payload to the server.
     const[x,y]= this.getXY(this.state.index);
     // evt.preventDefault();
-  
+    
     // const [x,y] = getXY(index)
      axios.post("http://localhost:9000/api/result", { "x": x, "y": y, "steps": 3, "email": this.state.email })
      .then(res=>{
       console.log(res.data.message)
       this.setState({
         ...this.state,
-        message: res.data.message
+        message:res.data.message
       })
      }).catch(err=>{
       console.log(err.message)
+      this.setState({
+        ...this.state,
+        message:err.message
+      })
+      
      })
     // axios.post("http://localhost:9000/api/result",{ "x": x, "y": y, "steps": 3, "email": email })
     // .then(res=>{
@@ -174,6 +182,11 @@ export default class AppClass extends React.Component {
     //   console.log(err.message)
     //   setInitialMessage(err.message)
     // })
+    ////RESET INPUT FIELD
+    this.setState({
+      ...this.state,
+      email: ""
+    })
   }
 
   render() {
