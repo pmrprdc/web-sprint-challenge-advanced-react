@@ -11,10 +11,10 @@ const initialIndex = 4 // the index the "B" is at
 export default function AppFunctional(props) {
   // THE FOLLOWING HELPERS ARE JUST RECOMMENDATIONS.
   // You can delete them and build your own logic from scratch.
-  const [state, changeState] = useState();
+  
   const [index, setIndex] = useState(4);
   const [initialSteps, setInitialSteps] = useState(0);
-  const [initialMessage, setInitialMessage] = useState("");
+  const [initialMessage, setInitialMessage] = useState('');
   const [email, setEmail] = useState(initialEmail);
 
   function getXY(index) {
@@ -47,8 +47,11 @@ export default function AppFunctional(props) {
   }
 
   function reset() {
+    setInitialMessage("")
     setIndex(4);
     setInitialSteps(0)
+    setEmail(initialEmail)
+    
     // Use this helper to reset all states to their initial values.
   }
 
@@ -130,7 +133,7 @@ export default function AppFunctional(props) {
 
 
     ///reseting input field
-    setEmail("")
+   setEmail(initialEmail)
   }
   
   return (
@@ -159,7 +162,7 @@ export default function AppFunctional(props) {
         <button onClick = {reset} id="reset">reset</button>
       </div>
       <form onSubmit={onSubmit}>
-        <input onChange={onChange} id="email" type="email" placeholder="type email"></input>
+        <input onChange={onChange} id="email" type="email" value={email} placeholder="type email"></input>
         <input id="submit" type="submit" value="Submit"></input>
       </form>
     </div>
