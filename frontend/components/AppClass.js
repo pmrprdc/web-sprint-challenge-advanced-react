@@ -180,7 +180,7 @@ export default class AppClass extends React.Component {
           <button onClick={this.reset} id="reset">reset</button>
         </div>
         <form>
-          <input onChange={this.onChange} id="email" type="email" placeholder="type email"></input>
+          <input onChange={this.onChange} value={this.state.email} id="email" type="email" placeholder="type email"></input>
           <input id="submit" type="submit"></input>
         </form>
       </div>
