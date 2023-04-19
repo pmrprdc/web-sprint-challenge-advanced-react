@@ -83,7 +83,7 @@ export default class AppClass extends React.Component {
         // setInitialMessage("you can't move up")
         this.setState({
           ...this.state,
-          message: "you can't move up"
+          message: "You can't go up"
         })
       }
     }
@@ -99,7 +99,7 @@ export default class AppClass extends React.Component {
         // setInitialMessage("you can't move up")
         this.setState({
           ...this.state,
-          message: "you can't move down"
+          message: "You can't go down"
         })
       }
     }
@@ -115,7 +115,7 @@ export default class AppClass extends React.Component {
         // setInitialMessage("you can't move up")
         this.setState({
           ...this.state,
-          message: "you can't move left"
+          message: "You can't go left"
         })
       }
     }
@@ -131,7 +131,7 @@ export default class AppClass extends React.Component {
         // setInitialMessage("you can't move up")
         this.setState({
           ...this.state,
-          message: "you can't move right"
+          message: "You can't go right"
         })
       }
       
@@ -156,9 +156,9 @@ export default class AppClass extends React.Component {
     // Use a POST request to send a payload to the server.
     const[x,y]= this.getXY(this.state.index);
     // evt.preventDefault();
-    
+    console.log(x,y)
     // const [x,y] = getXY(index)
-     axios.post("http://localhost:9000/api/result", { "x": x, "y": y, "steps": 3, "email": this.state.email })
+     axios.post("http://localhost:9000/api/result", { "x": x, "y": y, "steps": this.state.steps, "email": this.state.email })
      .then(res=>{
       console.log(res.data.message)
       this.setState({
@@ -166,10 +166,9 @@ export default class AppClass extends React.Component {
         message:res.data.message
       })
      }).catch(err=>{
-      console.log(err.message)
       this.setState({
         ...this.state,
-        message:err.message
+        message:err.response.data.message
       })
       
      })

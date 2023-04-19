@@ -68,7 +68,7 @@ export default function AppFunctional(props) {
         setIndex(index-3)
         setInitialSteps(initialSteps+1)
       } else {
-        setInitialMessage("you can't move up")
+        setInitialMessage("You can't go up")
       }
     }
     if(evt.target.id === "down"){
@@ -79,7 +79,7 @@ export default function AppFunctional(props) {
         setIndex(index+3)
         setInitialSteps(initialSteps+1)
       } else {
-        setInitialMessage("you can't move down")
+        setInitialMessage("You can't go down")
       }
      }
      if(evt.target.id === "right"){
@@ -89,7 +89,7 @@ export default function AppFunctional(props) {
           setInitialMessage("")
           setIndex(index+1)
         } else {
-          setInitialMessage("you can't move right")
+          setInitialMessage("You can't go right")
         }
      }
      if(evt.target.id === "left"){
@@ -98,7 +98,7 @@ export default function AppFunctional(props) {
         setInitialMessage("")
         setIndex(index-1)
       } else {
-        setInitialMessage("you can't move left")
+        setInitialMessage("You can't go left")
       }
      }
     
@@ -117,14 +117,14 @@ export default function AppFunctional(props) {
     evt.preventDefault();
     const [x,y] = getXY(index)
     console.log(x,y)
-    axios.post("http://localhost:9000/api/result",{ "x": x, "y": y, "steps": 3, "email": email })
+    axios.post("http://localhost:9000/api/result",{ "x": x, "y": y, "steps": initialSteps, "email": email })
     .then(res=>{
       setInitialMessage(res.data.message)
       
     })
     .catch(err=>{
       console.log(err.message)
-      setInitialMessage(err.message)
+      setInitialMessage(err.response.data.message)
     })
     // Use a POST request to send a payload to the server.
 
