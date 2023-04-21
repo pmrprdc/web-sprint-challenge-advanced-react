@@ -156,11 +156,11 @@ export default class AppClass extends React.Component {
     // Use a POST request to send a payload to the server.
     const[x,y]= this.getXY(this.state.index);
     // evt.preventDefault();
-    console.log(x,y)
+   
     // const [x,y] = getXY(index)
      axios.post("http://localhost:9000/api/result", { "x": x, "y": y, "steps": this.state.steps, "email": this.state.email })
      .then(res=>{
-      console.log(res.data.message)
+      
       this.setState({
         ...this.state,
         message:res.data.message
@@ -216,7 +216,7 @@ export default class AppClass extends React.Component {
           <button onClick={this.reset} id="reset">reset</button>
         </div>
         <form onSubmit={this.onSubmit}>
-          <input onChange={this.onChange} value={this.state.email} id="email" type="email" placeholder="type email"></input>
+          <input onChange={this.onChange} role="email" value={this.state.email} id="email" type="email" placeholder="type email"></input>
           <input id="submit" type="submit"value="Submit"></input>
         </form>
       </div>
